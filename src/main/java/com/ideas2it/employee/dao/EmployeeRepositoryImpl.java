@@ -8,7 +8,7 @@ import org.hibernate.query.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import com.ideas2it.exceptions.DataBaseException;
+import com.ideas2it.exceptions.EmployeeException;
 import com.ideas2it.model.Employee;
 import com.ideas2it.model.Department;
 import com.ideas2it.model.Sport;
@@ -23,13 +23,8 @@ import com.ideas2it.utilities.HibernateConnection;
  */
 public class EmployeeRepositoryImpl implements EmployeeRepository {
     
-    /**
-     * Adds a new employee to the database.
-     *
-     * @param employee - The employee to be added.
-     */
     @Override
-    public void addEmployee(Employee employee) throws DataBaseException {
+    public void addEmployee(Employee employee) throws EmployeeException {
         Transaction transaction = null;
         try (Session session = HibernateConnection.getSession()) {
             transaction = session.beginTransaction();
@@ -39,17 +34,12 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
             if (transaction != null) {
                 transaction.rollback();
             }
-            throw new DataBaseException("Error while adding Employee: " + employee.getName(), e);
+            throw new EmployeeException("Error while adding Employee: " + employee.getName(), e);
         }
     }
 
-   /**
-    *Deletes an employee from the database by ID.
-    *
-    *@param id - employee to delete.
-    */
     @Override
-    public void deleteEmployee(int id) throws DataBaseException {
+    public void deleteEmployee(int id) throws EmployeeException {
         Transaction transaction = null;
         try (Session session = HibernateConnection.getSession()) {
             transaction = session.beginTransaction();
@@ -63,50 +53,34 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
             if (transaction != null) {
                 transaction.rollback();
             }
-            throw new DataBaseException("Error while deleting Employee: " + id, e);
+            throw new EmployeeException("Error while deleting Employee: " + id, e);
         }
     }
 
-    /**
-     * Retrieves all employees from the database.
-     *
-     * @return alist of all employees.
-     */
     @Override
-    public List<Employee> getAllEmployees() throws DataBaseException {
+    public List<Employee> getAllEmployees() throws EmployeeException {
         try (Session session = HibernateConnection.getSession()) {
             Query<Employee> query = session.createQuery("From Employee where isActive = true", Employee.class);
             return query.list();
         } catch (HibernateException e) {
-            throw new DataBaseException("Error while getting all employees", e);
+            throw new EmployeeException("Error while getting all employees", e);
         }
     }
 
-    /**
-     * Finds an employee by ID.
-     *
-     * @param id - employee to find.
-     * @return The employee if found, null otherwise.
-     */
     @Override
-    public Employee findEmployeeById(int id) throws DataBaseException {
+    public Employee findEmployeeById(int id) throws EmployeeException {
         try (Session session = HibernateConnection.getSession()) {
             String hql = "FROM Employee e LEFT JOIN FETCH e.department WHERE e.id = :id";
             Query<Employee> query = session.createQuery(hql, Employee.class);
             query.setParameter("id", id);
             return query.uniqueResult();
         } catch (HibernateException e) {
-            throw new DataBaseException("Error while getting Employee by ID: " + id, e);
+            throw new EmployeeException("Error while getting Employee by ID: " + id, e);
         }
     }
 
-    /**
-     * Updates an existing employee in the database.
-     *
-     * @param employee - emplyee with update details.
-     */
     @Override
-    public void updateEmployee(Employee employee) throws DataBaseException {
+    public void updateEmployee(Employee employee) throws EmployeeException {
         Transaction transaction = null;
         try (Session session = HibernateConnection.getSession()) {
             transaction = session.beginTransaction();
@@ -116,18 +90,12 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
             if (transaction != null) {
                 transaction.rollback();
             }
-            throw new DataBaseException("Error while updating Employee: " + employee.getName(), e);
+            throw new EmployeeException("Error while updating Employee: " + employee.getName(), e);
         }
     }
 
-    /**
-     * Adds a sport to an employee.
-     *
-     * @param employeeId - Id of employee.
-     * @param sportId - Id of sport.
-     */
     @Override    
-    public void addSportToEmployee(int employeeId, int sportId) throws DataBaseException {
+    public void addSportToEmployee(int employeeId, int sportId) throws EmployeeException {
         Transaction transaction = null;
         try (Session session = HibernateConnection.getSession()) {
             transaction = session.beginTransaction();
@@ -144,18 +112,12 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
             if (transaction != null) {
                 transaction.rollback();
             }
-            throw new DataBaseException("Error while adding Sport to Employee: " + employeeId, e);
+            throw new EmployeeException("Error while adding Sport to Employee: " + employeeId, e);
         }
     }
 
-    /**
-     * remove a sport to an employee.
-     *
-     * @param employeeId - Id of employee.
-     * @param sportId - Id of sport.
-     */
     @Override
-    public void removeSportFromEmployee(int employeeId, int sportId) throws DataBaseException {
+    public void removeSportFromEmployee(int employeeId, int sportId) throws EmployeeException {
         Transaction transaction = null;
         try (Session session = HibernateConnection.getSession()) {
             transaction = session.beginTransaction();
@@ -163,16 +125,14 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
             Sport sport = session.get(Sport.class, sportId);
             if (employee != null && sport != null) {
                 employee.getSports().remove(sport);
-                sport.getEmployees().remove(employee);
                 session.saveOrUpdate(employee);
-                session.saveOrUpdate(sport);
             }
             transaction.commit();
         } catch (HibernateException e) {
             if (transaction != null) { 
                 transaction.rollback();
             }
-            throw new DataBaseException("Error while removing Sport from Employee: " + employeeId, e);
+            throw new EmployeeException("Error while removing Sport from Employee: " + employeeId, e);
         }
     }
               

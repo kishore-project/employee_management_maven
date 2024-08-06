@@ -3,7 +3,7 @@ package com.ideas2it.department.service;
 import java.sql.SQLException;
 import java.util.List;
 
-import com.ideas2it.exceptions.DataBaseException;
+import com.ideas2it.exceptions.EmployeeException;
 import com.ideas2it.department.dao.DepartmentRepository;
 import com.ideas2it.department.service.DepartmentServiceImpl;
 import com.ideas2it.employee.service.EmployeeService;
@@ -25,7 +25,7 @@ public interface DepartmentService {
      * @param id - The unique identifier for the department.
      * @param name - The name of the department.
      */
-    public void addDepartment(int id, String name) throws DataBaseException;
+    public void addDepartment(int id, String name) throws EmployeeException;
 
     /**
      * Remove a department from the repository by its Id.
@@ -33,14 +33,14 @@ public interface DepartmentService {
      * @param id - The unique identifier of the department to be removed.
      * @thows IllegalArgumentException if the department with the given ID is not found.
      */
-    public void removeDepartment(int id) throws IllegalArgumentException, DataBaseException;
+    public void removeDepartment(int id) throws IllegalArgumentException, EmployeeException;
 
     /**
      * Retrieves all department from the repository.
      *
      * @return A List of all department.
      */ 
-    public List<Department> getAllDepartments() throws DataBaseException;
+    public List<Department> getAllDepartments() throws EmployeeException;
 
     /**
      * Retrieves a department by its unique identifier.
@@ -48,7 +48,7 @@ public interface DepartmentService {
      *@param id - The unique identifier of the department.
      *@return The department with the given ID, or null if not found.
      */
-    public Department getDepartmentById(int id) throws DataBaseException;
+    public Department getDepartmentById(int id) throws EmployeeException;
 
     /**
      * Updates the details of an existing department.
@@ -57,7 +57,7 @@ public interface DepartmentService {
      * @param name - The new name for the department.
      * @thows IllegalArgumentException if the department with the given ID is not found.
      */
-    public void updateDepartment(int id, String name) throws IllegalArgumentException, DataBaseException;
+    public void updateDepartment(int id, String name) throws IllegalArgumentException, EmployeeException;
 
     /**
      * Finds employees by department ID.
@@ -65,6 +65,6 @@ public interface DepartmentService {
      * @param Id - deparmnetID of the department.
      * @return list employee.
      */    
-    public List<Employee> getEmployeesByDepartmentId(int id) throws DataBaseException;
+    public List<Employee> getEmployeesByDepartmentId(int id) throws EmployeeException;
 
 }

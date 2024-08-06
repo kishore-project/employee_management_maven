@@ -7,7 +7,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.hibernate.HibernateException;
 
-import com.ideas2it.exceptions.DataBaseException;
+import com.ideas2it.exceptions.EmployeeException;
 import com.ideas2it.department.service.DepartmentService;
 import com.ideas2it.department.service.DepartmentServiceImpl;
 import com.ideas2it.model.Employee;
@@ -75,7 +75,7 @@ public class DepartmentController {
     /**
      * Prompts the user to create a new department.
      */
-    public void createDepartment() throws IllegalArgumentException, DataBaseException {
+    public void createDepartment() throws IllegalArgumentException, EmployeeException {
         try {
             logger.debug("Department credentials validation has been initiated");
             String name = "";
@@ -104,7 +104,7 @@ public class DepartmentController {
     /**
      * Prompts the user to enter the ID of the department to be deleted and removes it.
      */
-    public void deleteDepartment() throws IllegalArgumentException, DataBaseException {
+    public void deleteDepartment() throws IllegalArgumentException, EmployeeException {
         try {
             System.out.print("Enter Department ID: ");
             int id = scanner.nextInt();
@@ -121,7 +121,7 @@ public class DepartmentController {
     /**
      * Displays all department currently in.
      */
-    public void displayAllDepartments() throws DataBaseException {
+    public void displayAllDepartments() throws EmployeeException {
         try {
             logger.debug("Getting department list");
             System.out.printf("|%-10s | %-20s |\n","ID","Department Name");
@@ -134,7 +134,7 @@ public class DepartmentController {
     /**
      * prompts the user to enter details for an existing department ID and updates its information.
      */
-    public void updateDepartment() throws IllegalArgumentException, DataBaseException {
+    public void updateDepartment() throws IllegalArgumentException, EmployeeException {
         try {
             logger.debug("Department update initiated");
             System.out.print("Enter the ID to update: ");
@@ -156,7 +156,7 @@ public class DepartmentController {
     /**
      * prompts the user to enter the ID of a department and displays the employees in it.
      */
-    public void displayEmployeesInDepartment() throws IllegalArgumentException, DataBaseException {
+    public void displayEmployeesInDepartment() throws IllegalArgumentException, EmployeeException {
         try {
              displayAllDepartments();
              System.out.println("enter Department ID: ");

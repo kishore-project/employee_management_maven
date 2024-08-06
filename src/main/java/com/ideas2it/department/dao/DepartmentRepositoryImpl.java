@@ -11,7 +11,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import com.ideas2it.department.dao.DepartmentRepository;
-import com.ideas2it.exceptions.DataBaseException;
+import com.ideas2it.exceptions.EmployeeException;
 import com.ideas2it.model.Department;
 import com.ideas2it.model.Employee;
 import com.ideas2it.utilities.HibernateConnection;
@@ -26,13 +26,8 @@ import com.ideas2it.utilities.HibernateConnection;
 public class DepartmentRepositoryImpl implements DepartmentRepository {
     private static final Logger logger = LogManager.getLogger(DepartmentRepositoryImpl.class);
 
-    /**
-     * Adds a new department to the database
-     *
-     * @param department - The department to be added.
-     */
     @Override
-    public void addDepartment(Department department) throws DataBaseException {
+    public void addDepartment(Department department) throws EmployeeException {
         Transaction transaction = null;
         try (Session session =  HibernateConnection.getSession()) {
             transaction = session.beginTransaction();
@@ -43,17 +38,12 @@ public class DepartmentRepositoryImpl implements DepartmentRepository {
                 transaction.rollback();
             }
             logger.error("Error while adding Department: " + department.getName(), e);
-            throw new DataBaseException("Error while adding Department: " + department.getName(), e);
+            throw new EmployeeException("Error while adding Department: " + department.getName(), e);
         }
     }
 
-   /**
-    *Deletes an department from the database by ID.
-    *
-    *@param id - departemnt to delete.
-    */
     @Override
-    public void deleteDepartment(int id) throws DataBaseException {
+    public void deleteDepartment(int id) throws EmployeeException {
         Transaction transaction = null;
         try (Session session =  HibernateConnection.getSession()) {
             transaction = session.beginTransaction();
@@ -68,48 +58,32 @@ public class DepartmentRepositoryImpl implements DepartmentRepository {
                 transaction.rollback();
             }
             logger.error("Error while deleting Department: " + id, e);
-            throw new DataBaseException("Error while deleting Department: " + id, e);
+            throw new EmployeeException("Error while deleting Department: " + id, e);
         }
     }
 
-    /**
-     * Retrieves all department from the database.
-     *
-     * @return a list of all department.
-     */
     @Override
-    public List<Department> getAllDepartments() throws DataBaseException {
+    public List<Department> getAllDepartments() throws EmployeeException {
         try (Session session =  HibernateConnection.getSession()) {
             return session.createQuery("FROM Department WHERE isDeleted = false", Department.class).list();
         } catch (HibernateException e) {
             logger.debug("Error while getting all Departments", e);
-            throw new DataBaseException("Error while getting all Departments", e);
+            throw new EmployeeException("Error while getting all Departments", e);
         }
     }
 
-    /**
-     * Finds an department by ID.
-     *
-     * @param id - department to find.
-     * @return The department if found, null otherwise.
-     */
     @Override
-    public Department findDepartmentById(int id) throws DataBaseException {
+    public Department findDepartmentById(int id) throws EmployeeException {
         try (Session session =  HibernateConnection.getSession()) {
             return session.get(Department.class, id);
         } catch (HibernateException e) {
             logger.error("Error while getting Department by ID: " + id, e);
-            throw new DataBaseException("Error while getting Department by ID: " + id, e);
+            throw new EmployeeException("Error while getting Department by ID: " + id, e);
         }
     }
 
-    /**
-     * Updates an existing department in the database.
-     *
-     * @param department - department with update details.
-     */
     @Override
-    public void updateDepartment(Department department) throws DataBaseException {
+    public void updateDepartment(Department department) throws EmployeeException {
         Transaction transaction = null;
         try (Session session =  HibernateConnection.getSession()) {
             transaction = session.beginTransaction();
@@ -120,18 +94,12 @@ public class DepartmentRepositoryImpl implements DepartmentRepository {
                 transaction.rollback();
             }
             logger.error("Error while updating Department: " + department.getName(), e);
-            throw new DataBaseException("Error while updating Department: " + department.getName(), e);
+            throw new EmployeeException("Error while updating Department: " + department.getName(), e);
         }
     }
 
-     /**
-     * Finds employees by department ID.
-     *
-     * @param departmentId - ID of the department.
-     * @return A list of employees in the specified department.
-     */
     @Override
-    public List<Employee> getEmployeesByDepartmentId(int departmentId) throws DataBaseException {
+    public List<Employee> getEmployeesByDepartmentId(int departmentId) throws EmployeeException {
         try (Session session =  HibernateConnection.getSession()) {
             Department department = session.get(Department.class, departmentId);
             if (department != null) {
@@ -141,7 +109,7 @@ public class DepartmentRepositoryImpl implements DepartmentRepository {
             }
         } catch (HibernateException e) {
             logger.error("Error while getting Employees by Department ID: " + departmentId, e);
-            throw new DataBaseException("Error while getting Employees by Department ID: " + departmentId, e);
+            throw new EmployeeException("Error while getting Employees by Department ID: " + departmentId, e);
         }
     }
 

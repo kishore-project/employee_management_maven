@@ -7,7 +7,7 @@ import org.hibernate.HibernateException;
  * Extends HibernateExceptions to provide more specific error handling. 
  * @author kishore
  */
-public class DataBaseException extends HibernateException {
+public class EmployeeException extends HibernateException {
    
     /**
      * Contructs a DatabaseException with the specified details message and cause.
@@ -15,7 +15,7 @@ public class DataBaseException extends HibernateException {
      * @param message the details message.
      * @param error the cause (which is saved for later retrival by the method).
      */
-    public DataBaseException(String message, Throwable error) {  
+    public EmployeeException(String message, Throwable error) {  
         super(message, error);  
     }  
 

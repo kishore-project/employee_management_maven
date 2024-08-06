@@ -10,7 +10,7 @@ import org.hibernate.query.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import com.ideas2it.exceptions.DataBaseException;
+import com.ideas2it.exceptions.EmployeeException;
 import com.ideas2it.model.Department;
 import com.ideas2it.model.Employee;
 import com.ideas2it.model.Sport;
@@ -25,12 +25,8 @@ import com.ideas2it.utilities.HibernateConnection;
  */
 public class SportRepositoryImpl implements SportRepository {
 
-    /**
-     * Adds a new sport to the database
-     *
-     * @param Sport - The sport to be added.
-     */
-    public void addSport(Sport sport) throws DataBaseException {
+    @Override
+    public void addSport(Sport sport) throws EmployeeException {
         Transaction transaction = null;
         try (Session session = HibernateConnection.getSession()) {
             transaction = session.beginTransaction();
@@ -40,17 +36,12 @@ public class SportRepositoryImpl implements SportRepository {
             if (transaction != null) {
                 transaction.rollback();
             }
-            throw new DataBaseException("Error while adding Sport: " + sport.getName(), e);
+            throw new EmployeeException("Error while adding Sport: " + sport.getName(), e);
         }
     }
 
-   /**
-    *Deletes an sport from the database by ID.
-    *
-    *@param id - sport to delete.
-    */
     @Override
-    public void deleteSport(int id) throws DataBaseException {
+    public void deleteSport(int id) throws EmployeeException {
         Transaction transaction = null;
         try (Session session = HibernateConnection.getSession()) {
             transaction = session.beginTransaction();
@@ -64,47 +55,31 @@ public class SportRepositoryImpl implements SportRepository {
             if (transaction != null) {
                 transaction.rollback();
             }
-            throw new DataBaseException("Error while deleting sport: " + id, e);
+            throw new EmployeeException("Error while deleting sport: " + id, e);
         }
     }
 
-    /**
-     * Retrieves all sports from the database.
-     *
-     * @return alist of all sports.
-     */
     @Override
-    public Set<Sport> getAllSports() throws DataBaseException {
+    public Set<Sport> getAllSports() throws EmployeeException {
         try (Session session = HibernateConnection.getSession()) {
             Query<Sport> query = session.createQuery("FROM Sport WHERE isActive = true", Sport.class);
             return new HashSet<>(query.list());
         } catch (HibernateException e) {
-            throw new DataBaseException("Error while getting all sports", e);
+            throw new EmployeeException("Error while getting all sports", e);
         }
     }
 
-    /**
-     * Finds an sport by ID.
-     *
-     * @param id - sport to find.
-     * @return The sport if found, null otherwise.
-     */
     @Override
-    public Sport findSportById(int id) throws DataBaseException {
+    public Sport findSportById(int id) throws EmployeeException {
         try (Session session = HibernateConnection.getSession()) {
             return session.get(Sport.class, id);
         } catch (HibernateException e) {
-            throw new DataBaseException("Error while getting sport by ID: " + id, e);
+            throw new EmployeeException("Error while getting sport by ID: " + id, e);
         }
     }
 
-    /**
-     * Updates an existing sport in the database.
-     *
-     * @param sport - Sport with update details.
-     */
     @Override
-    public void updateSport(Sport sport) throws DataBaseException {
+    public void updateSport(Sport sport) throws EmployeeException {
         Transaction transaction = null;
         try (Session session = HibernateConnection.getSession()) {
             transaction = session.beginTransaction();
@@ -114,23 +89,17 @@ public class SportRepositoryImpl implements SportRepository {
             if (transaction != null) {
                 transaction.rollback();
             }
-            throw new DataBaseException("Error while updating Sport: " + sport.getName(), e);
+            throw new EmployeeException("Error while updating Sport: " + sport.getName(), e);
         }
     }
 
-    /**
-     * Retrives the employee association with an sports by their id.
-     * 
-     * @param sportId - Id of sport.
-     * @return A list of employee association with sports.
-     */
     @Override
-    public Set<Employee> getEmployeesBySportId(int sportId) throws DataBaseException {
+    public Set<Employee> getEmployeesBySportId(int sportId) throws EmployeeException {
         try (Session session = HibernateConnection.getSession()) {
             Sport sport = session.get(Sport.class, sportId);
             return sport != null ? sport.getEmployees() : null;
         } catch (HibernateException e) {
-            throw new DataBaseException("Error while getting employees by sport ID: " + sportId, e);
+            throw new EmployeeException("Error while getting employees by sport ID: " + sportId, e);
         }
     }
 }

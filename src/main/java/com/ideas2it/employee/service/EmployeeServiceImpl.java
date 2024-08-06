@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Set;
 import java.time.LocalDate;
 
-import com.ideas2it.exceptions.DataBaseException;
+import com.ideas2it.exceptions.EmployeeException;
 import com.ideas2it.department.service.DepartmentService;
 import com.ideas2it.department.service.DepartmentServiceImpl;
 import com.ideas2it.employee.dao.EmployeeRepository;
@@ -35,20 +35,9 @@ public class EmployeeServiceImpl implements EmployeeService{
         employeeRepository = new EmployeeRepositoryImpl();
     }
 
-    /**
-     * Adds a new employee to database.
-     *
-     * @param id - the unique identifier for the employee. Must not already exits.
-     * @param name - The name of the employee.
-     * @param dob - The date of birth of the employee .Should not be a future date.
-     * @param emailId - The emailID of the employee. Must Be Valid.
-     * @param DeptId - The ID of the department the employee belong to. must exist.
-     * @param address - Address of the employee.
-     * @throws IllegalArgumentException if the department is not found.
-     */
     @Override
     public void addEmployee(int id, String name, LocalDate dob, String emailId,
-                            int deptId, Address address) throws IllegalArgumentException, DataBaseException {
+                            int deptId, Address address) throws IllegalArgumentException, EmployeeException {
         Department department = departmentService.getDepartmentById(deptId);
         if (department == null) {
             throw new IllegalArgumentException("Department not found" +deptId);
@@ -59,14 +48,8 @@ public class EmployeeServiceImpl implements EmployeeService{
         employeeRepository.addEmployee(employee);
     }
 
-    /**
-     * Marks an employee as inactive (effectively removes them from active use.
-     *
-     * @param id - The unique identifier for the employee to removed. must exist.
-     * @throws IllegalArgumentException if the employee is not found.
-     */
     @Override
-    public void removeEmployee(int id) throws IllegalArgumentException, DataBaseException {
+    public void removeEmployee(int id) throws IllegalArgumentException, EmployeeException {
         Employee employee = employeeRepository.findEmployeeById(id);
         if (employee != null) {
             employeeRepository.deleteEmployee(id);
@@ -75,40 +58,19 @@ public class EmployeeServiceImpl implements EmployeeService{
         }
     }
     
-    /**
-     * Retrieves all employees in the database.
-     *
-     * @return A list of all employees.
-     */
     @Override
-    public List<Employee> getAllEmployees() throws DataBaseException {
+    public List<Employee> getAllEmployees() throws EmployeeException {
         return employeeRepository.getAllEmployees();
     }
 
-    /**
-     * Retrieves an employee by their ID.
-     *
-     * @param id - The unique identifier for the employee. Must exist.
-     * @return The employee if found, or null if not found.
-     */
     @Override
-    public Employee getEmployeeById(int id) throws DataBaseException {
+    public Employee getEmployeeById(int id) throws EmployeeException {
         return employeeRepository.findEmployeeById(id);
     }        
 
-    /**
-     * Updates the details of an existing employee.
-     *
-     * @param name - The new name of the employee.
-     * @param dob - The date of birth of the employee. Should not be a future date.
-     * @param emailId - The new email Id of the employee.
-     * @param deptId - The ID of the new department the employee belongs to. Must exist.
-     * @param address - Address of the employee.
-     * @throws IllegalArgumentException if the department or employee is not found.
-     */
     @Override
     public void updateEmployee(int id, String name, LocalDate dob,
-                                String emailId, int deptId, Address address) throws IllegalArgumentException, DataBaseException {
+                                String emailId, int deptId, Address address) throws IllegalArgumentException, EmployeeException {
         Employee employee = employeeRepository.findEmployeeById(id);
         if (employee != null) {
             employee.setName(name);
@@ -128,35 +90,18 @@ public class EmployeeServiceImpl implements EmployeeService{
         }
     }
 
-    /**
-     * Retrieves a depatment by its ID.
-     *
-     * @param id - The unique identifier for the deparmtent. Must exist.
-     * @return The department if founf, or null if not found.
-     */
     @Override
-    public Department getDepartmentById(int id) throws DataBaseException {
+    public Department getDepartmentById(int id) throws EmployeeException {
         return departmentService.getDepartmentById(id);
     }
     
-    /**
-     * Retrieves all departments in the database.
-     * @return A list of all department.
-     */
     @Override
-    public List<Department>getAllDepartment() throws DataBaseException {
+    public List<Department>getAllDepartment() throws EmployeeException {
        return departmentService.getAllDepartments();
     }
 
-    /**
-     * Adds a sport to an employee's list of sports and updates the sports's list of employees.
-     *
-     * @param employeeID - The unique identifier of the employee.
-     * @param sportId - The unique identifier of the sport.
-     * @throws IllegalArgumentException if the employees or sport with the given Id is not found.
-     */
     @Override
-    public void addSportToEmployee(int employeeId, int sportId) throws DataBaseException {
+    public void addSportToEmployee(int employeeId, int sportId) throws EmployeeException {
         Employee employee = getEmployeeById(employeeId);
         Sport sport = sportService.getSportById(sportId);
 
@@ -168,15 +113,8 @@ public class EmployeeServiceImpl implements EmployeeService{
     }
 
 
-    /*
-     * Remove a sport to an employee's list of sports and updates the sports's list of employees.
-     *
-     * @param employeeID - The unique identifier of the employee.
-     * @param sportId - The unique identifier of the sport.
-     * @throws IllegalArgumentException if the employees or sport with the given Id is not found.
-     */
     @Override
-    public void removeSportFromEmployee(int employeeId, int sportId) throws DataBaseException {
+    public void removeSportFromEmployee(int employeeId, int sportId) throws EmployeeException {
         Employee employee = getEmployeeById(employeeId);
         Sport sport = sportService.getSportById(sportId);
 
@@ -187,13 +125,8 @@ public class EmployeeServiceImpl implements EmployeeService{
         }
     }
     
-    /**
-     * Retrieves all sport in the database.
-     *
-     * @return A list of all department.
-     */
     @Override
-    public Set<Sport> getAllSports() throws DataBaseException {
+    public Set<Sport> getAllSports() throws EmployeeException {
         return sportService.getAllSports();
     }
 }

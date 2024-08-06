@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-import com.ideas2it.exceptions.DataBaseException;
+import com.ideas2it.exceptions.EmployeeException;
 import com.ideas2it.model.Address;
 import com.ideas2it.model.Department;
 import com.ideas2it.model.Employee;
@@ -32,7 +32,7 @@ public interface EmployeeService {
      * @throws IllegalArgumentException if the department is not found.
      */
     void addEmployee(int id, String name, LocalDate dob, String emailId,
-                            int deptId,Address address) throws IllegalArgumentException, DataBaseException;
+                            int deptId,Address address) throws IllegalArgumentException, EmployeeException;
 
     /**
      * Marks an employee as inactive (effectively removes them from active use).
@@ -40,14 +40,14 @@ public interface EmployeeService {
      * @param id - The unique identifier for the employee to removed. must exist.
      * @throws IllegalArgumentException if the employee is not found.
      */
-    void removeEmployee(int id) throws IllegalArgumentException, DataBaseException;
+    void removeEmployee(int id) throws IllegalArgumentException, EmployeeException;
 
     /**
      * Retrieves all employees in the system.
      *
      * @return A list of all employees.
      */
-    List<Employee> getAllEmployees() throws DataBaseException;
+    List<Employee> getAllEmployees() throws EmployeeException;
 
     /**
      * Retrieves an employee by their ID.
@@ -55,7 +55,7 @@ public interface EmployeeService {
      * @param id - The unique identifier for the employee. Must exist.
      * @return The employee if found, or null if not found.
      */
-    Employee getEmployeeById(int id) throws DataBaseException;
+    Employee getEmployeeById(int id) throws EmployeeException;
 
     /**
      * Updates the details of an existing employee.
@@ -68,7 +68,7 @@ public interface EmployeeService {
      * @throws IllegalArgumentException if the department or employee is not found.
      */
     void updateEmployee(int id, String name, LocalDate dob,
-                                String emailId, int deptId,Address address) throws DataBaseException;
+                                String emailId, int deptId,Address address) throws EmployeeException;
 
 
     /**
@@ -77,14 +77,14 @@ public interface EmployeeService {
      * @param id - The unique identifier for the deparmtent. Must exist.
      * @return The department if founf, or null if not found.
      */
-    Department getDepartmentById(int id) throws DataBaseException;
+    Department getDepartmentById(int id) throws EmployeeException;
 
     /**
      * Retrieves all departments in the database.
      *
      * @return A list of all department.
      */
-    List<Department>getAllDepartment() throws DataBaseException;
+    List<Department>getAllDepartment() throws EmployeeException;
 
     /**
      * Adds a sport to an employee's list of sports and updates the sports's list of employees.
@@ -93,7 +93,7 @@ public interface EmployeeService {
      * @param sportId - The unique identifier of the sport.
      * @throws IllegalArgumentException if the employees or sport with the given Id is not found.
      */
-    void addSportToEmployee(int employeeId, int sportId) throws DataBaseException;
+    void addSportToEmployee(int employeeId, int sportId) throws EmployeeException;
 
     /**
      * Remove a sport to an employee's list of sports and updates the sports's list of employees.
@@ -102,10 +102,10 @@ public interface EmployeeService {
      * @param sportId - The unique identifier of the sport.
      * @throws IllegalArgumentException if the employees or sport with the given Id is not found.
      */
-    void removeSportFromEmployee(int employeeId, int sportId) throws DataBaseException;
+    void removeSportFromEmployee(int employeeId, int sportId) throws EmployeeException;
     
     /**
      * Retrieves all sport in the database.
      */
-    public Set<Sport> getAllSports() throws DataBaseException;
+    public Set<Sport> getAllSports() throws EmployeeException;
 }

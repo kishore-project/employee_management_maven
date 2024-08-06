@@ -10,7 +10,7 @@ import org.apache.logging.log4j.Logger;
 import org.hibernate.HibernateException;
 
 import com.ideas2it.department.controller.DepartmentController;
-import com.ideas2it.exceptions.DataBaseException;
+import com.ideas2it.exceptions.EmployeeException;
 import com.ideas2it.employee.service.EmployeeService;
 import com.ideas2it.employee.service.EmployeeServiceImpl;
 import com.ideas2it.model.Address;
@@ -90,7 +90,7 @@ public class EmployeeController {
     /**
      * Prompts the user to create a new employess.
      */
-    public void createEmployee() throws IllegalArgumentException, DataBaseException {
+    public void createEmployee() throws IllegalArgumentException, EmployeeException {
         try {
             logger.debug("Employee credentials validation has been initiated");
             boolean checkName = false;
@@ -201,7 +201,7 @@ public class EmployeeController {
     /**
      * Prompts the user to delete an employee.
      */
-    public void deleteEmployee() throws IllegalArgumentException, DataBaseException {
+    public void deleteEmployee() throws IllegalArgumentException, EmployeeException {
         try {
             System.out.print("Enter Employee Id to delete: ");
             int id = scanner.nextInt();
@@ -221,7 +221,7 @@ public class EmployeeController {
     /**
      * Displays all employees in the system.
      */
-    public void displayAllEmployees() throws DataBaseException {
+    public void displayAllEmployees() throws EmployeeException {
         try {
             logger.debug("Getting employee list");
             List<Employee> employees = employeeService.getAllEmployees();
@@ -238,7 +238,7 @@ public class EmployeeController {
     /**
      *Prompts the user to enter an employee ID and displays the corresponding employee.
      */
-    public void displayEmployeeById() throws IllegalArgumentException, DataBaseException {
+    public void displayEmployeeById() throws IllegalArgumentException, EmployeeException {
         try {
             System.out.print("Enter Employee Id to display: ");
             int id = scanner.nextInt();
@@ -262,7 +262,7 @@ public class EmployeeController {
     /**
      * Prompts the user to update an existing employee's details.
      */
-    public void updateEmployee() throws IllegalArgumentException, DataBaseException {
+    public void updateEmployee() throws IllegalArgumentException, EmployeeException {
         try {
             logger.debug("Employee update initiated");
             boolean checkName = false;
@@ -381,7 +381,7 @@ public class EmployeeController {
     /**
      * Prompts the user to add a sport to an employee.
      */
-    public void addSportToEmployee() throws IllegalArgumentException, DataBaseException {
+    public void addSportToEmployee() throws IllegalArgumentException, EmployeeException {
         try {
             logger.debug("Employee added to sport initiated");
             System.out.println("Enter Employee Id: ");
@@ -407,7 +407,7 @@ public class EmployeeController {
     /**
      * Prompts the user to remove a sport form an employee.
      */
-    public void removeSportFromEmployee() throws IllegalArgumentException, DataBaseException {
+    public void removeSportFromEmployee() throws IllegalArgumentException, EmployeeException {
         try {
             logger.debug("Employee remove to sport initiated");
             System.out.print("Enter Employee Id: ");

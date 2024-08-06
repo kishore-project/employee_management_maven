@@ -8,11 +8,11 @@ com\ideas2it\model\Department.class
 com\ideas2it\sports\dao\SportRepositoryImpl.class
 com\ideas2it\department\dao\DepartmentRepository.class
 com\ideas2it\department\service\DepartmentServiceImpl.class
+com\ideas2it\exceptions\EmployeeException.class
 com\ideas2it\model\Address.class
 com\ideas2it\sports\controller\SportController.class
 com\ideas2it\department\controller\DepartmentController.class
 com\ideas2it\employee\dao\EmployeeRepositoryImpl.class
-com\ideas2it\exceptions\DataBaseException.class
 com\ideas2it\sports\dao\SportRepository.class
 com\ideas2it\department\service\DepartmentService.class
 com\ideas2it\model\Employee.class

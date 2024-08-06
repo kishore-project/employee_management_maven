@@ -3,7 +3,7 @@ package com.ideas2it.sports.service;
 import java.util.ArrayList;
 import java.util.Set;
 
-import com.ideas2it.exceptions.DataBaseException;
+import com.ideas2it.exceptions.EmployeeException;
 import com.ideas2it.model.Sport;
 import com.ideas2it.sports.dao.SportRepository;
 import com.ideas2it.sports.dao.SportRepositoryImpl;
@@ -29,7 +29,7 @@ public class SportServiceImpl implements SportService {
      * @param name - The name of the sport
      */
     @Override
-    public void addSport(int id, String name) throws DataBaseException {
+    public void addSport(int id, String name) throws EmployeeException {
         Sport sport = new Sport(id, name);
         sportRepository.addSport(sport);
     }
@@ -41,7 +41,7 @@ public class SportServiceImpl implements SportService {
      * @thows IllegalArgumentException if the sport with the given ID is not found.
      */
     @Override
-    public void removeSport(int id) throws IllegalArgumentException, DataBaseException {
+    public void removeSport(int id) throws IllegalArgumentException, EmployeeException {
         Sport sport = sportRepository.findSportById(id);
         if (sport != null) {
             sportRepository.deleteSport(id);
@@ -56,7 +56,7 @@ public class SportServiceImpl implements SportService {
      * @return A List of all sport.
      */
     @Override     
-    public Set<Sport> getAllSports() throws DataBaseException {
+    public Set<Sport> getAllSports() throws EmployeeException {
         return sportRepository.getAllSports();
     }
     
@@ -67,7 +67,7 @@ public class SportServiceImpl implements SportService {
      *@return The sport with the given ID, or null if not found.
      */
     @Override
-    public Sport getSportById(int id) throws DataBaseException {
+    public Sport getSportById(int id) throws EmployeeException {
         return sportRepository.findSportById(id);
     }
 
@@ -79,7 +79,7 @@ public class SportServiceImpl implements SportService {
      * @thows IllegalArgumentException if the sport with the given ID is not found.
      */
     @Override
-    public void updateSport(int id, String name) throws IllegalArgumentException, DataBaseException {
+    public void updateSport(int id, String name) throws IllegalArgumentException, EmployeeException {
         Sport sport = sportRepository.findSportById(id);
         if (sport != null) {
             sport.setName(name);

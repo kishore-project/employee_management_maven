@@ -118,3 +118,61 @@ Caused by: java.lang.ClassNotFoundException: Could not load requested class : co
 [INFO ] 2024-08-06 11:54:49.079 [App.main()] HibernateConnection - opening new Hibernate session.
 [INFO ] 2024-08-06 11:54:50.704 [App.main()] HibernateConnection - opening new Hibernate session.
 [INFO ] 2024-08-06 11:54:56.258 [App.main()] HibernateConnection - opening new Hibernate session.
+[INFO ] 2024-08-06 14:44:42.007 [App.main()] Version - HHH000412: Hibernate ORM core version 5.4.32.Final
+[INFO ] 2024-08-06 14:44:42.406 [App.main()] Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+[WARN ] 2024-08-06 14:44:42.504 [App.main()] pooling - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+[INFO ] 2024-08-06 14:44:42.510 [App.main()] pooling - HHH10001005: using driver [com.mysql.cj.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/employeemanagement]
+[INFO ] 2024-08-06 14:44:42.511 [App.main()] pooling - HHH10001001: Connection properties: {user=root}
+[INFO ] 2024-08-06 14:44:42.511 [App.main()] pooling - HHH10001003: Autocommit mode: false
+[INFO ] 2024-08-06 14:44:42.514 [App.main()] DriverManagerConnectionProviderImpl - HHH000115: Hibernate connection pool size: 20 (min=1)
+[INFO ] 2024-08-06 14:44:42.719 [App.main()] Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+[INFO ] 2024-08-06 14:44:43.356 [App.main()] access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@3afeb65b] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+[INFO ] 2024-08-06 14:44:43.580 [App.main()] JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[INFO ] 2024-08-06 14:44:43.592 [App.main()] HibernateConnection - SessionFactory created succesfully.
+[INFO ] 2024-08-06 14:44:43.593 [App.main()] HibernateConnection - opening new Hibernate session.
+[INFO ] 2024-08-06 14:44:43.701 [App.main()] SportController - Sport added successfully.hockey
+[INFO ] 2024-08-06 14:45:13.127 [App.main()] HibernateConnection - opening new Hibernate session.
+[INFO ] 2024-08-06 14:45:16.670 [App.main()] HibernateConnection - opening new Hibernate session.
+[INFO ] 2024-08-06 14:45:26.927 [App.main()] HibernateConnection - opening new Hibernate session.
+[INFO ] 2024-08-06 14:45:29.672 [App.main()] HibernateConnection - opening new Hibernate session.
+[INFO ] 2024-08-06 14:45:48.543 [App.main()] HibernateConnection - opening new Hibernate session.
+[INFO ] 2024-08-06 14:45:52.929 [App.main()] HibernateConnection - opening new Hibernate session.
+[INFO ] 2024-08-06 16:33:31.303 [App.main()] Version - HHH000412: Hibernate ORM core version 5.4.32.Final
+[INFO ] 2024-08-06 16:33:31.730 [App.main()] Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+[WARN ] 2024-08-06 16:33:31.842 [App.main()] pooling - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+[INFO ] 2024-08-06 16:33:31.847 [App.main()] pooling - HHH10001005: using driver [com.mysql.cj.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/employeemanagement]
+[INFO ] 2024-08-06 16:33:31.848 [App.main()] pooling - HHH10001001: Connection properties: {user=root}
+[INFO ] 2024-08-06 16:33:31.848 [App.main()] pooling - HHH10001003: Autocommit mode: false
+[INFO ] 2024-08-06 16:33:31.855 [App.main()] DriverManagerConnectionProviderImpl - HHH000115: Hibernate connection pool size: 20 (min=1)
+[INFO ] 2024-08-06 16:33:32.094 [App.main()] Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+[INFO ] 2024-08-06 16:33:32.905 [App.main()] access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@eb18b2f] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+[INFO ] 2024-08-06 16:33:33.306 [App.main()] JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[INFO ] 2024-08-06 16:33:33.318 [App.main()] HibernateConnection - SessionFactory created succesfully.
+[INFO ] 2024-08-06 16:33:33.323 [App.main()] HibernateConnection - opening new Hibernate session.
+[INFO ] 2024-08-06 16:43:06.108 [App.main()] Version - HHH000412: Hibernate ORM core version 5.4.32.Final
+[INFO ] 2024-08-06 16:43:06.530 [App.main()] Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+[WARN ] 2024-08-06 16:43:06.644 [App.main()] pooling - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+[INFO ] 2024-08-06 16:43:06.650 [App.main()] pooling - HHH10001005: using driver [com.mysql.cj.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/employeemanagement]
+[INFO ] 2024-08-06 16:43:06.651 [App.main()] pooling - HHH10001001: Connection properties: {user=root}
+[INFO ] 2024-08-06 16:43:06.654 [App.main()] pooling - HHH10001003: Autocommit mode: false
+[INFO ] 2024-08-06 16:43:06.656 [App.main()] DriverManagerConnectionProviderImpl - HHH000115: Hibernate connection pool size: 20 (min=1)
+[INFO ] 2024-08-06 16:43:06.917 [App.main()] Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+[INFO ] 2024-08-06 16:43:07.803 [App.main()] access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@eb18b2f] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+[INFO ] 2024-08-06 16:43:08.269 [App.main()] JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[INFO ] 2024-08-06 16:43:08.285 [App.main()] HibernateConnection - SessionFactory created succesfully.
+[INFO ] 2024-08-06 16:43:08.288 [App.main()] HibernateConnection - opening new Hibernate session.
+[INFO ] 2024-08-06 16:43:08.525 [App.main()] HibernateConnection - opening new Hibernate session.
+[INFO ] 2024-08-06 16:43:08.555 [App.main()] HibernateConnection - opening new Hibernate session.
+[INFO ] 2024-08-06 16:43:08.637 [App.main()] EmployeeController - Sport removed to employee successfully.
+[INFO ] 2024-08-06 16:52:39.204 [App.main()] Version - HHH000412: Hibernate ORM core version 5.4.32.Final
+[INFO ] 2024-08-06 16:52:39.615 [App.main()] Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+[WARN ] 2024-08-06 16:52:39.718 [App.main()] pooling - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+[INFO ] 2024-08-06 16:52:39.725 [App.main()] pooling - HHH10001005: using driver [com.mysql.cj.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/employeemanagement]
+[INFO ] 2024-08-06 16:52:39.726 [App.main()] pooling - HHH10001001: Connection properties: {user=root}
+[INFO ] 2024-08-06 16:52:39.726 [App.main()] pooling - HHH10001003: Autocommit mode: false
+[INFO ] 2024-08-06 16:52:39.729 [App.main()] DriverManagerConnectionProviderImpl - HHH000115: Hibernate connection pool size: 20 (min=1)
+[INFO ] 2024-08-06 16:52:39.990 [App.main()] Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+[INFO ] 2024-08-06 16:52:40.788 [App.main()] access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@eb18b2f] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+[INFO ] 2024-08-06 16:52:41.217 [App.main()] JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[INFO ] 2024-08-06 16:52:41.245 [App.main()] HibernateConnection - SessionFactory created succesfully.
+[INFO ] 2024-08-06 16:52:41.248 [App.main()] HibernateConnection - opening new Hibernate session.

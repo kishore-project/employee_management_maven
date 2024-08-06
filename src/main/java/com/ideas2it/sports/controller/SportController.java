@@ -7,7 +7,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.hibernate.HibernateException;
 
-import com.ideas2it.exceptions.DataBaseException;
+import com.ideas2it.exceptions.EmployeeException;
 import com.ideas2it.model.Employee;
 import com.ideas2it.model.Sport;
 import com.ideas2it.sports.service.SportService;
@@ -80,7 +80,7 @@ public class SportController {
     /**
      * Prompts the user to enter details for a new sport and adds it to the system.
      */
-    public void createSport() throws IllegalArgumentException, DataBaseException {
+    public void createSport() throws IllegalArgumentException, EmployeeException {
         try {
             logger.debug(" Create a Department has been initiated");
             System.out.print("Enter sport Name: ");
@@ -99,7 +99,7 @@ public class SportController {
     /**
      * Prompts the user to enter the ID of the sport to be deleted and removes it.
      */
-    public void deleteSport() throws IllegalArgumentException, DataBaseException {
+    public void deleteSport() throws IllegalArgumentException, EmployeeException {
         try {
             System.out.print("Enter sport Id to delete: ");
             int id = scanner.nextInt();
@@ -117,7 +117,7 @@ public class SportController {
     /**
      * Displays all sports currently in.
      */ 
-    public void displayAllSports() throws DataBaseException {
+    public void displayAllSports() throws EmployeeException {
         try {
             logger.debug("Getting sport list");
             System.out.println("All Sports:");
@@ -135,7 +135,7 @@ public class SportController {
     /**
      * Prompts the user to enter the ID of a sport and displays its details.
      */
-    public void displaySportById() throws IllegalArgumentException, DataBaseException {
+    public void displaySportById() throws IllegalArgumentException, EmployeeException {
         try {
             logger.debug("Search Sport by ID ");
             System.out.print("Enter sport Id to display: ");
@@ -158,7 +158,7 @@ public class SportController {
    /**
     * prompts the user to enter details for an existing sport ID and updates its information.
     */
-    public void updateSport() throws IllegalArgumentException, DataBaseException  {
+    public void updateSport() throws IllegalArgumentException, EmployeeException  {
         try {
             logger.debug("Sport update initiated");
             System.out.print("Enter sport Id: ");
@@ -183,7 +183,7 @@ public class SportController {
     /**
      * prompts the user to enter the ID of a sport and displays the employees participating in it.
      */
-    public void displayEmployeesInSport() throws IllegalArgumentException, DataBaseException  {
+    public void displayEmployeesInSport() throws IllegalArgumentException, EmployeeException  {
         try {
              displayAllSports();
              System.out.println("enter Sport ID: ");
