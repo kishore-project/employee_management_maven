@@ -3,6 +3,9 @@ package com.ideas2it.sports.service;
 import java.util.ArrayList;
 import java.util.Set;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.ideas2it.exceptions.EmployeeException;
 import com.ideas2it.model.Sport;
 import com.ideas2it.sports.dao.SportRepository;
@@ -16,6 +19,7 @@ import com.ideas2it.sports.dao.SportRepositoryImpl;
  * @version 1.0 
  */
 public class SportServiceImpl implements SportService {
+    private static final Logger logger = LogManager.getLogger(SportServiceImpl.class);
     private SportRepository sportRepository;
 
     public SportServiceImpl() {
@@ -46,6 +50,7 @@ public class SportServiceImpl implements SportService {
         if (sport != null) {
             sportRepository.deleteSport(id);
         } else {
+            logger.info("Sport not found" +id);
             throw new IllegalArgumentException("Sport not found" +id);
         }
     }
@@ -85,6 +90,7 @@ public class SportServiceImpl implements SportService {
             sport.setName(name);
             sportRepository.updateSport(sport);
         } else {
+            logger.info("Sport not found" +id);
             throw new IllegalArgumentException("Sport not found" +id);
         }
     }

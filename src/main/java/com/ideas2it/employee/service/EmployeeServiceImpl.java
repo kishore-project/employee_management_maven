@@ -6,6 +6,9 @@ import java.util.List;
 import java.util.Set;
 import java.time.LocalDate;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.ideas2it.exceptions.EmployeeException;
 import com.ideas2it.department.service.DepartmentService;
 import com.ideas2it.department.service.DepartmentServiceImpl;
@@ -27,6 +30,7 @@ import com.ideas2it.sports.service.SportServiceImpl;
  */
 public class EmployeeServiceImpl implements EmployeeService{
 
+    private static final Logger logger = LogManager.getLogger(EmployeeServiceImpl.class);
     private EmployeeRepository employeeRepository;
     private DepartmentService departmentService = new DepartmentServiceImpl();
     private SportService sportService = new SportServiceImpl();
@@ -40,6 +44,7 @@ public class EmployeeServiceImpl implements EmployeeService{
                             int deptId, Address address) throws IllegalArgumentException, EmployeeException {
         Department department = departmentService.getDepartmentById(deptId);
         if (department == null) {
+            logger.info("Department not found" +deptId);
             throw new IllegalArgumentException("Department not found" +deptId);
 
         }
@@ -54,6 +59,7 @@ public class EmployeeServiceImpl implements EmployeeService{
         if (employee != null) {
             employeeRepository.deleteEmployee(id);
         } else {
+            logger.info("Employee not found" +id);
             throw new IllegalArgumentException("Employee not found" +id);
         }
     }
@@ -108,6 +114,7 @@ public class EmployeeServiceImpl implements EmployeeService{
         if (employee != null && sport != null) {
             employeeRepository.addSportToEmployee(employeeId, sportId);
         } else {
+            logger.info("Employee or Sport not found");
             throw new IllegalArgumentException("Employee or Sport not found");
         }
     }

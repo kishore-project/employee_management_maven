@@ -3,6 +3,9 @@ package com.ideas2it.employee.dao;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.query.Query;
 import org.hibernate.Session;
@@ -22,7 +25,8 @@ import com.ideas2it.utilities.HibernateConnection;
  * @version 1.0 
  */
 public class EmployeeRepositoryImpl implements EmployeeRepository {
-    
+        private static final Logger logger = LogManager.getLogger(EmployeeRepository.class);
+
     @Override
     public void addEmployee(Employee employee) throws EmployeeException {
         Transaction transaction = null;
@@ -34,6 +38,7 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
             if (transaction != null) {
                 transaction.rollback();
             }
+            logger.error("Error while adding Employee: " + employee.getName(), e);
             throw new EmployeeException("Error while adding Employee: " + employee.getName(), e);
         }
     }
@@ -53,6 +58,7 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
             if (transaction != null) {
                 transaction.rollback();
             }
+            logger.error("Error while deleting Employee: " + id, e);
             throw new EmployeeException("Error while deleting Employee: " + id, e);
         }
     }
@@ -63,6 +69,7 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
             Query<Employee> query = session.createQuery("From Employee where isActive = true", Employee.class);
             return query.list();
         } catch (HibernateException e) {
+            logger.info("Error while getting all employees", e);
             throw new EmployeeException("Error while getting all employees", e);
         }
     }
@@ -74,7 +81,8 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
             Query<Employee> query = session.createQuery(hql, Employee.class);
             query.setParameter("id", id);
             return query.uniqueResult();
-        } catch (HibernateException e) {
+        } catch (EmployeeException e) {
+            logger.error("Error while getting Employee by ID: " + id, e);
             throw new EmployeeException("Error while getting Employee by ID: " + id, e);
         }
     }
@@ -90,6 +98,7 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
             if (transaction != null) {
                 transaction.rollback();
             }
+            logger.error("Error while updating Employee: " + employee.getName(), e);
             throw new EmployeeException("Error while updating Employee: " + employee.getName(), e);
         }
     }
@@ -112,6 +121,7 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
             if (transaction != null) {
                 transaction.rollback();
             }
+            logger.error("Error while adding Sport to Employee: " + employeeId, e);
             throw new EmployeeException("Error while adding Sport to Employee: " + employeeId, e);
         }
     }
@@ -132,6 +142,7 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
             if (transaction != null) { 
                 transaction.rollback();
             }
+            logger.error("Error while removing Sport from Employee: " + employeeId, e);
             throw new EmployeeException("Error while removing Sport from Employee: " + employeeId, e);
         }
     }

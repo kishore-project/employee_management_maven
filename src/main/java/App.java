@@ -16,7 +16,7 @@ import com.ideas2it.sports.controller.SportController;
  */
 public class App {
     public static void main( String[] args ) throws IllegalArgumentException {
-        // Create instances of controllers
+
         EmployeeController employeeController = new EmployeeController();
         DepartmentController departmentController = new DepartmentController();
         SportController sportController = new  SportController();

@@ -176,3 +176,15 @@ Caused by: java.lang.ClassNotFoundException: Could not load requested class : co
 [INFO ] 2024-08-06 16:52:41.217 [App.main()] JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
 [INFO ] 2024-08-06 16:52:41.245 [App.main()] HibernateConnection - SessionFactory created succesfully.
 [INFO ] 2024-08-06 16:52:41.248 [App.main()] HibernateConnection - opening new Hibernate session.
+[INFO ] 2024-08-06 17:56:35.421 [App.main()] Version - HHH000412: Hibernate ORM core version 5.4.32.Final
+[INFO ] 2024-08-06 17:56:35.828 [App.main()] Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+[WARN ] 2024-08-06 17:56:35.934 [App.main()] pooling - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+[INFO ] 2024-08-06 17:56:35.942 [App.main()] pooling - HHH10001005: using driver [com.mysql.cj.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/employeemanagement]
+[INFO ] 2024-08-06 17:56:35.942 [App.main()] pooling - HHH10001001: Connection properties: {user=root}
+[INFO ] 2024-08-06 17:56:35.942 [App.main()] pooling - HHH10001003: Autocommit mode: false
+[INFO ] 2024-08-06 17:56:35.945 [App.main()] DriverManagerConnectionProviderImpl - HHH000115: Hibernate connection pool size: 20 (min=1)
+[INFO ] 2024-08-06 17:56:36.201 [App.main()] Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+[INFO ] 2024-08-06 17:56:37.038 [App.main()] access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@14c2c879] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+[INFO ] 2024-08-06 17:56:37.455 [App.main()] JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[INFO ] 2024-08-06 17:56:37.471 [App.main()] HibernateConnection - SessionFactory created succesfully.
+[INFO ] 2024-08-06 17:56:37.473 [App.main()] HibernateConnection - opening new Hibernate session.
