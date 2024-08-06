@@ -1,0 +1,120 @@
+[INFO ] 2024-08-06 11:50:35.402 [App.main()] Version - HHH000412: Hibernate ORM core version 5.4.32.Final
+[INFO ] 2024-08-06 11:50:35.925 [App.main()] Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+[WARN ] 2024-08-06 11:50:36.040 [App.main()] pooling - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+[ERROR] 2024-08-06 11:50:36.041 [App.main()] HibernateConnection - Error creating SessionFactory: 
+org.hibernate.service.spi.ServiceException: Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:275) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:237) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:214) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.id.factory.internal.DefaultIdentifierGeneratorFactory.injectServices(DefaultIdentifierGeneratorFactory.java:152) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.injectDependencies(AbstractServiceRegistryImpl.java:286) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:243) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:214) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.<init>(InFlightMetadataCollectorImpl.java:176) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:127) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.build(MetadataBuildingProcess.java:86) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.boot.internal.MetadataBuilderImpl.build(MetadataBuilderImpl.java:479) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.boot.internal.MetadataBuilderImpl.build(MetadataBuilderImpl.java:85) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:689) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:724) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at com.ideas2it.utilities.HibernateConnection.<init>(HibernateConnection.java:36) ~[classes/:?]
+	at com.ideas2it.utilities.HibernateConnection.<clinit>(HibernateConnection.java:16) ~[classes/:?]
+	at com.ideas2it.employee.dao.EmployeeRepositoryImpl.getAllEmployees(EmployeeRepositoryImpl.java:77) ~[classes/:?]
+	at com.ideas2it.employee.service.EmployeeServiceImpl.getAllEmployees(EmployeeServiceImpl.java:85) ~[classes/:?]
+	at com.ideas2it.employee.controller.EmployeeController.displayAllEmployees(EmployeeController.java:227) ~[classes/:?]
+	at com.ideas2it.employee.controller.EmployeeController.displayEmployeeMenu(EmployeeController.java:63) ~[classes/:?]
+	at App.main(App.java:40) ~[classes/:?]
+	at org.codehaus.mojo.exec.ExecJavaMojo.doMain(ExecJavaMojo.java:385) ~[?:?]
+	at org.codehaus.mojo.exec.ExecJavaMojo.doExec(ExecJavaMojo.java:374) ~[?:?]
+	at org.codehaus.mojo.exec.ExecJavaMojo.lambda$execute$0(ExecJavaMojo.java:296) ~[?:?]
+	at java.base/java.lang.Thread.run(Thread.java:1570) [?:?]
+Caused by: org.hibernate.boot.registry.classloading.spi.ClassLoadingException: Unable to load class [com.mysql.cj.jdbc.Driver]
+	at org.hibernate.boot.registry.classloading.internal.ClassLoaderServiceImpl.classForName(ClassLoaderServiceImpl.java:133) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.loadDriverIfPossible(DriverManagerConnectionProviderImpl.java:149) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.buildCreator(DriverManagerConnectionProviderImpl.java:105) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.buildPool(DriverManagerConnectionProviderImpl.java:89) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.configure(DriverManagerConnectionProviderImpl.java:73) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.configureService(StandardServiceRegistryImpl.java:107) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:246) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:214) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.buildJdbcConnectionAccess(JdbcEnvironmentInitiator.java:145) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:66) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:35) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:101) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:263) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	... 24 more
+Caused by: java.lang.ClassNotFoundException: Could not load requested class : com.mysql.cj.jdbc.Driver
+	at org.hibernate.boot.registry.classloading.internal.AggregatedClassLoader.findClass(AggregatedClassLoader.java:210) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:592) ~[?:?]
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525) ~[?:?]
+	at java.base/java.lang.Class.forName0(Native Method) ~[?:?]
+	at java.base/java.lang.Class.forName(Class.java:529) ~[?:?]
+	at java.base/java.lang.Class.forName(Class.java:508) ~[?:?]
+	at org.hibernate.boot.registry.classloading.internal.ClassLoaderServiceImpl.classForName(ClassLoaderServiceImpl.java:130) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.loadDriverIfPossible(DriverManagerConnectionProviderImpl.java:149) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.buildCreator(DriverManagerConnectionProviderImpl.java:105) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.buildPool(DriverManagerConnectionProviderImpl.java:89) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.configure(DriverManagerConnectionProviderImpl.java:73) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.configureService(StandardServiceRegistryImpl.java:107) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:246) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:214) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.buildJdbcConnectionAccess(JdbcEnvironmentInitiator.java:145) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:66) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:35) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:101) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:263) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	... 24 more
+[INFO ] 2024-08-06 11:52:55.055 [App.main()] Version - HHH000412: Hibernate ORM core version 5.4.32.Final
+[INFO ] 2024-08-06 11:52:55.441 [App.main()] Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+[WARN ] 2024-08-06 11:52:55.551 [App.main()] pooling - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+[INFO ] 2024-08-06 11:52:55.578 [App.main()] pooling - HHH10001005: using driver [com.mysql.cj.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/employeemanagement]
+[INFO ] 2024-08-06 11:52:55.578 [App.main()] pooling - HHH10001001: Connection properties: {user=root}
+[INFO ] 2024-08-06 11:52:55.578 [App.main()] pooling - HHH10001003: Autocommit mode: false
+[INFO ] 2024-08-06 11:52:55.583 [App.main()] DriverManagerConnectionProviderImpl - HHH000115: Hibernate connection pool size: 20 (min=1)
+[INFO ] 2024-08-06 11:52:55.837 [App.main()] Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+[ERROR] 2024-08-06 11:52:55.966 [App.main()] HibernateConnection - Error creating SessionFactory: 
+org.hibernate.boot.registry.classloading.spi.ClassLoadingException: Unable to load class [com.model.Employee]
+	at org.hibernate.boot.registry.classloading.internal.ClassLoaderServiceImpl.classForName(ClassLoaderServiceImpl.java:133) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.boot.model.source.internal.annotations.AnnotationMetadataSourceProcessorImpl.<init>(AnnotationMetadataSourceProcessorImpl.java:108) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess$1.<init>(MetadataBuildingProcess.java:164) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:158) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.build(MetadataBuildingProcess.java:86) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.boot.internal.MetadataBuilderImpl.build(MetadataBuilderImpl.java:479) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.boot.internal.MetadataBuilderImpl.build(MetadataBuilderImpl.java:85) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:689) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:724) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at com.ideas2it.utilities.HibernateConnection.<init>(HibernateConnection.java:36) ~[classes/:?]
+	at com.ideas2it.utilities.HibernateConnection.<clinit>(HibernateConnection.java:16) ~[classes/:?]
+	at com.ideas2it.employee.dao.EmployeeRepositoryImpl.getAllEmployees(EmployeeRepositoryImpl.java:77) ~[classes/:?]
+	at com.ideas2it.employee.service.EmployeeServiceImpl.getAllEmployees(EmployeeServiceImpl.java:85) ~[classes/:?]
+	at com.ideas2it.employee.controller.EmployeeController.displayAllEmployees(EmployeeController.java:227) ~[classes/:?]
+	at com.ideas2it.employee.controller.EmployeeController.displayEmployeeMenu(EmployeeController.java:63) ~[classes/:?]
+	at App.main(App.java:40) ~[classes/:?]
+	at org.codehaus.mojo.exec.ExecJavaMojo.doMain(ExecJavaMojo.java:385) ~[?:?]
+	at org.codehaus.mojo.exec.ExecJavaMojo.doExec(ExecJavaMojo.java:374) ~[?:?]
+	at org.codehaus.mojo.exec.ExecJavaMojo.lambda$execute$0(ExecJavaMojo.java:296) ~[?:?]
+	at java.base/java.lang.Thread.run(Thread.java:1570) [?:?]
+Caused by: java.lang.ClassNotFoundException: Could not load requested class : com.model.Employee
+	at org.hibernate.boot.registry.classloading.internal.AggregatedClassLoader.findClass(AggregatedClassLoader.java:210) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:592) ~[?:?]
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525) ~[?:?]
+	at java.base/java.lang.Class.forName0(Native Method) ~[?:?]
+	at java.base/java.lang.Class.forName(Class.java:529) ~[?:?]
+	at java.base/java.lang.Class.forName(Class.java:508) ~[?:?]
+	at org.hibernate.boot.registry.classloading.internal.ClassLoaderServiceImpl.classForName(ClassLoaderServiceImpl.java:130) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	... 19 more
+[INFO ] 2024-08-06 11:53:51.716 [App.main()] Version - HHH000412: Hibernate ORM core version 5.4.32.Final
+[INFO ] 2024-08-06 11:53:52.109 [App.main()] Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+[WARN ] 2024-08-06 11:53:52.211 [App.main()] pooling - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+[INFO ] 2024-08-06 11:53:52.217 [App.main()] pooling - HHH10001005: using driver [com.mysql.cj.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/employeemanagement]
+[INFO ] 2024-08-06 11:53:52.218 [App.main()] pooling - HHH10001001: Connection properties: {user=root}
+[INFO ] 2024-08-06 11:53:52.218 [App.main()] pooling - HHH10001003: Autocommit mode: false
+[INFO ] 2024-08-06 11:53:52.222 [App.main()] DriverManagerConnectionProviderImpl - HHH000115: Hibernate connection pool size: 20 (min=1)
+[INFO ] 2024-08-06 11:53:52.481 [App.main()] Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+[INFO ] 2024-08-06 11:53:53.310 [App.main()] access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@387d302d] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+[INFO ] 2024-08-06 11:53:53.790 [App.main()] JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[INFO ] 2024-08-06 11:53:53.806 [App.main()] HibernateConnection - SessionFactory created succesfully.
+[INFO ] 2024-08-06 11:53:53.807 [App.main()] HibernateConnection - opening new Hibernate session.
+[INFO ] 2024-08-06 11:54:49.079 [App.main()] HibernateConnection - opening new Hibernate session.
+[INFO ] 2024-08-06 11:54:50.704 [App.main()] HibernateConnection - opening new Hibernate session.
+[INFO ] 2024-08-06 11:54:56.258 [App.main()] HibernateConnection - opening new Hibernate session.
