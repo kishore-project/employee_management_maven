@@ -28,7 +28,6 @@ import javax.persistence.ManyToMany;
 @Table(name = "employee")
 public class Employee {
     @Id
-
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 

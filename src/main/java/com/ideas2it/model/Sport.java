@@ -22,7 +22,6 @@ import javax.persistence.ManyToMany;
 @Table(name = "SPORT")
 public class Sport {
     @Id
-
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
