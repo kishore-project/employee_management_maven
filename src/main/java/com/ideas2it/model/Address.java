@@ -35,7 +35,7 @@ public class Address {
     @Column(name = "zip")
     private String zip;
 
-    @OneToOne(mappedBy = "address", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "address", cascade = {CascadeType.MERGE,CascadeType.PERSIST}, fetch = FetchType.LAZY)
     private Employee employee;
 
     public Address() {
@@ -46,6 +46,14 @@ public class Address {
         this.city = city;
         this.state = state;
         this.zip = zip;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getStreet() {
@@ -84,4 +92,5 @@ public class Address {
     public String toString() {
         return street + ", " + city + ", " + state + " - " + zip;
     }
+
 }

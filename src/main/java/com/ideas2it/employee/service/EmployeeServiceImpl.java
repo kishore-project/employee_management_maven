@@ -70,27 +70,38 @@ public class EmployeeServiceImpl implements EmployeeService{
     @Override
     public Employee getEmployeeById(int id) throws EmployeeException {
         return employeeRepository.findEmployeeById(id);
-    }        
+    }
 
     @Override
-    public void updateEmployee(int id, String name, LocalDate dob,
-                                String emailId, int deptId, Address address) throws IllegalArgumentException, EmployeeException {
+    public void updateEmployee(int id, String name, LocalDate dob, String emailId, int deptId, Address updatedAddress) throws IllegalArgumentException, EmployeeException {
         Employee employee = employeeRepository.findEmployeeById(id);
         if (employee != null) {
             employee.setName(name);
             employee.setDob(dob);
             employee.setEmailId(emailId);
-            employee.setAddress(address);
+
+            // Get the existing address from the database
+            Address existingAddress = employee.getAddress();
+            if (existingAddress != null) {
+                // Update the existing address details
+                existingAddress.setStreet(updatedAddress.getStreet());
+                existingAddress.setCity(updatedAddress.getCity());
+                existingAddress.setState(updatedAddress.getState());
+                existingAddress.setZip(updatedAddress.getZip());
+            } else {
+                // Set the new address if there's no existing one
+                employee.setAddress(updatedAddress);
+            }
 
             Department department = departmentService.getDepartmentById(deptId);
             if (department != null) {
                 employee.setDepartment(department);
             } else {
-                throw new IllegalArgumentException("Department not found" +deptId);
+                throw new IllegalArgumentException("Department not found" + deptId);
             }
             employeeRepository.updateEmployee(employee);
         } else {
-            throw new IllegalArgumentException("Employee not found"+id);
+            throw new IllegalArgumentException("Employee not found" + id);
         }
     }
 
