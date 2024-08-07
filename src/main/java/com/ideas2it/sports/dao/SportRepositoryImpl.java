@@ -1,9 +1,6 @@
 package com.ideas2it.sports.dao;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import org.apache.logging.log4j.LogManager;
@@ -14,10 +11,8 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import com.ideas2it.exceptions.EmployeeException;
-import com.ideas2it.model.Department;
 import com.ideas2it.model.Employee;
 import com.ideas2it.model.Sport;
-import com.ideas2it.sports.dao.SportRepository;
 import com.ideas2it.utilities.HibernateConnection;
 
 /**

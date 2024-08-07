@@ -1,7 +1,5 @@
 package com.ideas2it.department.dao;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 import com.ideas2it.exceptions.EmployeeException;

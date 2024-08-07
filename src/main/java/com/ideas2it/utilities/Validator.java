@@ -22,12 +22,12 @@ public class Validator {
      * @param name - The name to validate
      * @return true if the name is valid, false otherwise
      */
-    public static boolean isValidname(String Name) {
-        if(Name == null) {
+    public static boolean isValidname(String name) {
+        if(name == null) {
             return false;
         }
 
-        Matcher matcher=NamePattern.matcher(Name);
+        Matcher matcher=NamePattern.matcher(name);
         return matcher.matches();
     }
 

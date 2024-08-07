@@ -1,7 +1,5 @@
 package com.ideas2it.employee.dao;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
@@ -13,10 +11,7 @@ import org.hibernate.Transaction;
 
 import com.ideas2it.exceptions.EmployeeException;
 import com.ideas2it.model.Employee;
-import com.ideas2it.model.Department;
 import com.ideas2it.model.Sport;
-import com.ideas2it.employee.service.EmployeeService;
-import com.ideas2it.employee.dao.EmployeeRepository;
 import com.ideas2it.utilities.HibernateConnection;
 
 /**

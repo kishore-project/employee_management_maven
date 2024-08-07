@@ -1,7 +1,5 @@
 package com.ideas2it.employee.service;
 
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.time.LocalDate;

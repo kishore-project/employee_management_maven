@@ -1,7 +1,6 @@
 package com.ideas2it.employee.service;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -27,7 +26,7 @@ public interface EmployeeService {
      * @param name - The name of the employee.
      * @param dob - The date of birth of the employee .Should not be a future date.
      * @param emailId - The emailID of the employee. Must Be Valid.
-     * @param DeptId - The ID of the department the employee belong to. must exist.
+     * @param deptId - The ID of the department the employee belong to. must exist.
      * @param address - Address of the employee.
      * @throws IllegalArgumentException if the department is not found.
      */

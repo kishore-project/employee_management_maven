@@ -1,14 +1,10 @@
 package com.ideas2it.sports.dao;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Set;
-import org.hibernate.HibernateException;
 
 import com.ideas2it.exceptions.EmployeeException;
 import com.ideas2it.model.Sport;
 import com.ideas2it.model.Employee;
-import com.ideas2it.model.Department;
 
 /**
  * <p>
@@ -22,7 +18,7 @@ public interface SportRepository {
 
     /**
      * Adds a new sport to the database
-     * @param Sport - The sport to be added.
+     * @param sport - The sport to be added.
      */
     public void addSport(Sport sport) throws EmployeeException;
 

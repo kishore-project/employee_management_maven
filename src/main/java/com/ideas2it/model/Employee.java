@@ -16,11 +16,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.ManyToMany;
-
-import com.ideas2it.model.Department;
-import com.ideas2it.model.Sport;
 
 /**
  * Represents an Employee that can  associated with department & sports.

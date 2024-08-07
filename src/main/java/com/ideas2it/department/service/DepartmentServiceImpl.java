@@ -1,6 +1,5 @@
 package com.ideas2it.department.service;
 
-import java.sql.SQLException;
 import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -8,8 +7,6 @@ import org.apache.logging.log4j.Logger;
 import com.ideas2it.exceptions.EmployeeException;
 import com.ideas2it.department.dao.DepartmentRepository;
 import com.ideas2it.department.dao.DepartmentRepositoryImpl;
-import com.ideas2it.department.service.DepartmentService;
-import com.ideas2it.employee.service.EmployeeService;
 import com.ideas2it.model.Department;
 import com.ideas2it.model.Employee;
 

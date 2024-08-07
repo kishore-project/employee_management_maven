@@ -1,18 +1,9 @@
 package com.ideas2it.employee.dao;
 
-import java.sql.Statement;
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 import com.ideas2it.exceptions.EmployeeException;
-import com.ideas2it.department.dao.DepartmentRepository;
-import com.ideas2it.employee.dao.EmployeeRepository;
-import com.ideas2it.employee.service.EmployeeService;
-import com.ideas2it.model.Department;
 import com.ideas2it.model.Employee;
-import com.ideas2it.model.Sport;
-import com.ideas2it.sports.dao.SportRepository;
 
 /**
  * Repository for managing employees, including adding, removing, updating and retrieving employees.

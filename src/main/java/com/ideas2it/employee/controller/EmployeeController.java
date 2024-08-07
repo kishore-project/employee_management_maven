@@ -1,7 +1,6 @@
 package com.ideas2it.employee.controller;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -9,7 +8,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.hibernate.HibernateException;
 
-import com.ideas2it.department.controller.DepartmentController;
 import com.ideas2it.exceptions.EmployeeException;
 import com.ideas2it.employee.service.EmployeeService;
 import com.ideas2it.employee.service.EmployeeServiceImpl;

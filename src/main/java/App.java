@@ -4,7 +4,6 @@ import com.ideas2it.employee.controller.EmployeeController;
 import com.ideas2it.department.controller.DepartmentController;
 import com.ideas2it.sports.controller.SportController;
 
-
 /**
  * <p>
  * The main class for the Employee Management System. This class contains the main method

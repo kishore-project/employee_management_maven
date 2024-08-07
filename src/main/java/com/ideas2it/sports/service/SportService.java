@@ -1,12 +1,9 @@
 package com.ideas2it.sports.service;
 
-import java.util.ArrayList;
 import java.util.Set;
 
 import com.ideas2it.exceptions.EmployeeException;
 import com.ideas2it.model.Sport;
-import com.ideas2it.sports.dao.SportRepository;
-import com.ideas2it.sports.service.SportServiceImpl;
 
 /**
  * <p>
@@ -29,7 +26,7 @@ public interface SportService {
      * Remove a sport from the repository by its Id.
      *
      * @param id - The unique identifier of the sport to be removed.
-     * @thows IllegalArgumentException if the sport with the given ID is not found.
+     * @throws IllegalArgumentException if the sport with the given ID is not found.
      */
     public void removeSport(int id) throws IllegalArgumentException, EmployeeException;
 
