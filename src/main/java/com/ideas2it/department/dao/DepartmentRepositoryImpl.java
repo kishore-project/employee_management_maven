@@ -97,13 +97,21 @@ public class DepartmentRepositoryImpl implements DepartmentRepository {
 
     @Override
     public List<Employee> getEmployeesByDepartmentId(int departmentId) throws EmployeeException {
-        try (Session session =  HibernateConnection.getSession()) {
+        List<Employee> activeEmployees = new ArrayList<>();
+
+        try (Session session = HibernateConnection.getSession()) {
             Department department = session.get(Department.class, departmentId);
+
             if (department != null) {
-                return new ArrayList<>(department.getEmployees());
-            } else {
-                return new ArrayList<>();
+                for (Employee employee : department.getEmployees()) {
+                    if (employee.getIsActive()) { // Assuming isDeleted() returns the inactive status
+                        activeEmployees.add(employee);
+                    }
+                }
             }
+
+            return activeEmployees;
+
         } catch (HibernateException e) {
             logger.error("Error while getting Employees by Department ID: " + departmentId, e);
             throw new EmployeeException("Error while getting Employees by Department ID: " + departmentId, e);
